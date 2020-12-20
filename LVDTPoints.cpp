@@ -33,48 +33,48 @@ Points::Points(
 // Points deff
 void Points::PointC10(float (&P)[2])
 {
-    P[0] = CoreLenght / 2.f;
-    P[1] = CoreRadius;
+    P[1] = CoreLenght / 2.f;
+    P[0] = CoreRadius;
 }
 
 
 void Points::PointP11(float (&P)[2])
 {
-    P[0] = PrimaryLenght / 2.f;
-    P[1] = PrimaryIntRadius;
+    P[1] = PrimaryLenght / 2.f;
+    P[0] = PrimaryIntRadius;
 }
 
 
 void Points::PointP12(float (&P)[2])
 {
-    P[0] = PrimaryLenght / 2.f;
-    P[1] = PrimaryExtRadius;
+    P[1] = PrimaryLenght / 2.f;
+    P[0] = PrimaryExtRadius;
 }
 
 
 void Points::PointS11(float (&P)[2])
 {
-    P[0] = SecondaryLenght / 2.f;
-    P[1] = SecondaryIntRadius;
+    P[1] = SecondaryLenght / 2.f;
+    P[0] = SecondaryIntRadius;
 }
 
 
 void Points::PointS12(float (&P)[2])
 {
-    P[0] = SecondaryLenght / 2.f;
-    P[1] = SecondaryExtRadius;
+    P[1] = SecondaryLenght / 2.f;
+    P[0] = SecondaryExtRadius;
 }
 
 
 void Points::PointS13(float (&P)[2])
 {
-    P[0] = SecondarySepparation / 2.f;
-    P[1] = SecondaryIntRadius;
+    P[1] = SecondarySepparation / 2.f;
+    P[0] = SecondaryExtRadius;
 }
 
 
 void Points::PointS14(float (&P)[2])
 {
-    P[0] = SecondarySepparation / 2.f;
-    P[1] = SecondaryExtRadius;
+    P[1] = SecondarySepparation / 2.f;
+    P[0] = SecondaryIntRadius;
 }
