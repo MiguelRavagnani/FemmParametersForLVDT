@@ -38,4 +38,7 @@ class Points
         void PointS12(float (&P)[2]);
         void PointS13(float (&P)[2]);
         void PointS14(float (&P)[2]);
+        void CoreMat(float (&P)[2]);
+        void PrimaryMat(float (&P)[2]);
+        void SecondaryMat(float (&P)[2]);
 };

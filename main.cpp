@@ -12,7 +12,10 @@ int main()
         MainPointS11[2],
         MainPointS12[2],
         MainPointS13[2],
-        MainPointS14[2];
+        MainPointS14[2],
+        MainCoreMat[2],
+        MainPrimaryMat[2],
+        MainSecondaryMat[2];
 
     // Parametersariables declaration
     float MainCoreLenght,    
@@ -70,6 +73,9 @@ int main()
     FirstQuad.PointS12(MainPointS12);
     FirstQuad.PointS13(MainPointS13);
     FirstQuad.PointS14(MainPointS14);
+    FirstQuad.CoreMat(MainCoreMat);
+    FirstQuad.PrimaryMat(MainPrimaryMat);
+    FirstQuad.SecondaryMat(MainSecondaryMat);
 
     // Remove old file and create new one
     if (remove(filename) != 0)
@@ -93,6 +99,7 @@ int main()
         outfile << "newdocument(0)" << std::endl;
         outfile << "messagebox(\"Debug\")" << std::endl;
         outfile << "pause()" << std::endl;
+        outfile << "mi_seteditmode(\"nodes\")" << std::endl;
 
         // Core points
         //     - Point PC10 (x,y): First Quard core point
@@ -326,6 +333,47 @@ int main()
                 << -1.f * MainPointS14[1] << "," 
                 << -1.f * MainPointS11[0] << "," 
                 << -1.f * MainPointS11[1] << ")" << std::endl;
+
+        // Material Points
+        //Core
+        outfile << "mi_addblocklabel(" << MainCoreMat[0] << "," << MainCoreMat[1] <<  ")" << std::endl;
+
+        // Primary
+        outfile << "mi_addblocklabel(" << MainPrimaryMat[0] << "," << MainPrimaryMat[1] <<  ")" << std::endl;
+        outfile << "mi_addblocklabel(" << -1.f * MainPrimaryMat[0] << "," << MainPrimaryMat[1] <<  ")" << std::endl;
+
+        // Secondary
+        outfile << "mi_addblocklabel(" << MainSecondaryMat[0] << "," << MainSecondaryMat[1] <<  ")" << std::endl;
+        outfile << "mi_addblocklabel(" << -1.f * MainSecondaryMat[0] << "," << MainSecondaryMat[1] <<  ")" << std::endl;
+        outfile << "mi_addblocklabel(" << -1.f * MainSecondaryMat[0] << "," << -1.f * MainSecondaryMat[1] <<  ")" << std::endl;
+        outfile << "mi_addblocklabel(" << MainSecondaryMat[0] << "," << -1.f * MainSecondaryMat[1] <<  ")" << std::endl;
+ 
+        outfile << "mi_clearselected()" << std::endl;
+
+        outfile << "mi_selectsegment(" << MainCoreMat[0] << "," << MainCoreMat[1] <<  ")" << std::endl;
+
+        outfile << "mi_seteditmode(\"blocks\")" << std::endl;
+
+        outfile << "mi_seteditmode(\"blocks\")" << std::endl;
+
+        outfile << "mi_getmaterial(\"Supermalloy\")" << std::endl;
+
+        outfile << "mi_zoom(" << -1 * MainCoreMat[0] * 2.f + -1.f * MainSecondaryMat[0] << "," 
+                              << -1 * MainCoreMat[0] * 2.f + -1.f * MainSecondaryMat[1] << ","
+                              << MainCoreMat[0] * 2.f + MainSecondaryMat[0] << "," 
+                              << MainCoreMat[0] * 2.f + MainSecondaryMat[1] << ")" << std::endl;
+
+/*
+        outfile << "mi_probdef(60," 
+                << "\"milimeteres\","  
+                << "\"planar\","
+                << "1e-008,"
+                << "1,"
+                << "30,"
+                << "\"succ. approx\")" 
+                << std::endl;
+*/
+
         outfile.close();
 
         std::cout << "\nOutput Successful!\n" << std::endl;
